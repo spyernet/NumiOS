@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>NumiOS Browser Tests</title>
+  <style>
+    :root { color-scheme: light dark; font: 15px/1.5 system-ui, sans-serif; }
+    body { margin: 2rem auto; padding: 0 1rem; max-width: 64rem; }
+    h1 { font-size: 1.5rem; }
+    #summary { padding: .5rem .75rem; border-inline-start: 3px solid #5486d4; }
+    #summary[data-state="failed"] { border-color: #c33; }
+    #summary[data-state="passed"] { border-color: #29834a; }
+    li { margin-block: .5rem; }
+    .passed { color: #29834a; }
+    .failed { color: #d44; }
+    .skipped { opacity: .75; }
+    pre { overflow: auto; padding: .75rem; border: 1px solid color-mix(in srgb, CanvasText 20%, Canvas); }
+  </style>
+</head>
+<body>
+  <h1>NumiOS browser verification</h1>
+  <p>This page runs dependency-free browser checks against the same ES modules used by NumiOS. IndexedDB coverage is skipped only when the browser does not expose IndexedDB.</p>
+  <p id="summary" data-state="running" role="status" aria-live="polite">Running tests…</p>
+  <ol id="results"></ol>
+  <details>
+    <summary>Environment and failure details</summary>
+    <pre id="details"></pre>
+  </details>
+  <script type="module" src="./browser-suite.js"></script>
+</body>
+</html>

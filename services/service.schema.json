@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NumiOS service unit",
+  "type": "object",
+  "required": ["unit", "service", "dependencies", "security", "resources", "enabled"],
+  "properties": {
+    "unit": { "type": "object", "required": ["name", "description"], "properties": { "name": { "type": "string", "pattern": "^[a-z0-9-]+\\.service$" }, "description": { "type": "string" } }, "additionalProperties": false },
+    "service": { "type": "object", "required": ["type", "entry", "restart", "restartLimit", "restartWindowMs"], "properties": { "type": { "enum": ["builtin", "worker"] }, "entry": { "type": "string" }, "restart": { "enum": ["no", "on-failure", "always"] }, "restartLimit": { "type": "integer", "minimum": 0 }, "restartWindowMs": { "type": "integer", "minimum": 1 }, "restartBackoffMs": { "type": "integer", "minimum": 0 } }, "additionalProperties": true },
+    "dependencies": { "type": "object", "properties": { "requires": { "type": "array", "items": { "type": "string" } }, "after": { "type": "array", "items": { "type": "string" } }, "wants": { "type": "array", "items": { "type": "string" } } }, "additionalProperties": false },
+    "security": { "type": "object", "required": ["capabilities"], "properties": { "capabilities": { "type": "array", "uniqueItems": true, "items": { "type": "string" } } }, "additionalProperties": false },
+    "resources": { "type": "object", "properties": { "timeoutMs": { "type": "integer", "minimum": 1 }, "maxConcurrentTasks": { "type": "integer", "minimum": 1 } }, "additionalProperties": false },
+    "enabled": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}

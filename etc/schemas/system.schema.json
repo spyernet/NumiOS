@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NumiOS system configuration",
+  "type": "object",
+  "required": ["schemaVersion", "os", "storage", "runtime", "logging", "applications", "packages"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "os": { "type": "object", "required": ["name", "version", "architecture"], "properties": { "name": { "type": "string" }, "version": { "type": "string" }, "architecture": { "type": "string" } }, "additionalProperties": false },
+    "storage": { "type": "object", "required": ["backend", "databaseName", "databaseVersion", "rootQuotaBytes", "tempQuotaBytes", "requestPersistentStorage", "allowEphemeralRoot"], "properties": { "backend": { "enum": ["indexeddb", "memory-volatile"] }, "databaseName": { "type": "string" }, "databaseVersion": { "type": "integer", "minimum": 1 }, "rootQuotaBytes": { "type": "integer", "minimum": 0 }, "tempQuotaBytes": { "type": "integer", "minimum": 0 }, "requestPersistentStorage": { "type": "boolean" }, "allowEphemeralRoot": { "type": "boolean" } }, "additionalProperties": false },
+    "runtime": { "type": "object", "properties": { "maxProcesses": { "type": "integer", "minimum": 1 }, "maxLogicalMemoryBytes": { "type": "integer", "minimum": 0 }, "maxHandlesPerProcess": { "type": "integer", "minimum": 1 }, "cooperativeTaskBudgetMs": { "type": "integer", "minimum": 1 }, "defaultSyscallTimeoutMs": { "type": "integer", "minimum": 1 }, "maxSyscallTimeoutMs": { "type": "integer", "minimum": 1 }, "schedulerConcurrency": { "type": "integer", "minimum": 1 }, "schedulerQueueLimit": { "type": "integer", "minimum": 1 } }, "additionalProperties": true },
+    "logging": { "type": "object", "required": ["level", "capacity"], "properties": { "level": { "enum": ["trace", "debug", "info", "warn", "error", "fatal"] }, "capacity": { "type": "integer", "minimum": 100, "maximum": 100000 } }, "additionalProperties": false },
+    "applications": { "type": "object", "properties": { "allowDom": { "const": false }, "workerOnly": { "const": true } }, "additionalProperties": false },
+    "packages": { "type": "object", "required": ["allowUnsignedLocal", "trustedKeys", "maximumArchiveBytes", "maximumUnpackedBytes"], "properties": { "allowUnsignedLocal": { "type": "boolean" }, "trustedKeys": { "type": "object" }, "maximumArchiveBytes": { "type": "integer", "minimum": 1 }, "maximumUnpackedBytes": { "type": "integer", "minimum": 1 } }, "additionalProperties": false }
+  },
+  "additionalProperties": false
+}

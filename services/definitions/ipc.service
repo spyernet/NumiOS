@@ -1,0 +1,8 @@
+{
+  "unit": { "name": "ipc.service", "description": "In-kernel process message channels" },
+  "service": { "type": "builtin", "entry": "ipc", "restart": "on-failure", "restartLimit": 5, "restartWindowMs": 60000, "restartBackoffMs": 250 },
+  "dependencies": { "requires": ["storage.service"], "after": ["storage.service"], "wants": [] },
+  "security": { "capabilities": ["ipc.use", "ipc.share"] },
+  "resources": { "timeoutMs": 10000, "maxConcurrentTasks": 16 },
+  "enabled": true
+}

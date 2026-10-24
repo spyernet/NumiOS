@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "bootId": "numios-default",
+  "timeoutMs": 30000,
+  "stageTimeoutMs": 15000,
+  "retry": { "storage": 1, "services": 0 },
+  "recovery": { "enabled": true, "safeTarget": "recovery", "continueWithoutOptionalServices": true },
+  "serviceTarget": "default.target",
+  "registerServiceWorker": true,
+  "mounts": [],
+  "serviceUnits": [
+    "../services/definitions/storage.service",
+    "../services/definitions/logging.service",
+    "../services/definitions/ipc.service",
+    "../services/definitions/package-repositories.service",
+    "../services/definitions/system-monitor.service"
+  ],
+  "stages": [
+    "configuration",
+    "storage",
+    "kernel",
+    "syscalls",
+    "security",
+    "processes",
+    "filesystems",
+    "services",
+    "target",
+    "ready"
+  ]
+}

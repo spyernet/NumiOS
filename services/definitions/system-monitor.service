@@ -1,0 +1,8 @@
+{
+  "unit": { "name": "system-monitor.service", "description": "Periodic system health snapshot and diagnostics event producer" },
+  "service": { "type": "builtin", "entry": "system-monitor", "restart": "on-failure", "restartLimit": 4, "restartWindowMs": 60000, "restartBackoffMs": 500 },
+  "dependencies": { "requires": ["logging.service", "ipc.service"], "after": ["logging.service", "ipc.service"], "wants": ["package-repositories.service"] },
+  "security": { "capabilities": ["system.info", "ipc.use"] },
+  "resources": { "timeoutMs": 10000, "maxConcurrentTasks": 4 },
+  "enabled": true
+}

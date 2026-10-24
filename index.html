@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="NumiOS browser-native operating-system core diagnostics">
+  <title>NumiOS OS Core</title>
+  <style>
+    :root { color-scheme: light dark; font: 15px/1.5 system-ui, sans-serif; }
+    body { margin: 2rem auto; padding: 0 1rem; max-width: 64rem; }
+    h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+    p { margin: .25rem 0 1rem; }
+    #status { padding: .45rem .7rem; border-inline-start: 3px solid #5486d4; background: color-mix(in srgb, CanvasText 5%, Canvas); }
+    pre { min-height: 12rem; max-height: 60vh; overflow: auto; padding: 1rem; border: 1px solid color-mix(in srgb, CanvasText 20%, Canvas); white-space: pre-wrap; }
+    code { font-family: ui-monospace, monospace; }
+  </style>
+</head>
+<body>
+  <h1>NumiOS OS Core</h1>
+  <p>No graphical shell is installed. This page reports boot progress; use the programmatic control API from developer tools or tests.</p>
+  <p id="status" data-numios-state role="status" aria-live="polite">Starting browser bootstrap…</p>
+  <pre data-numios-diagnostics aria-label="Boot diagnostics"></pre>
+  <script type="module" src="./boot/boot.js"></script>
+</body>
+</html>

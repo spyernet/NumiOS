@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "maxProcesses": 256,
+  "maxLogicalMemoryBytes": 268435456,
+  "maxHandlesPerProcess": 256,
+  "schedulerConcurrency": 4,
+  "schedulerQueueLimit": 1000,
+  "syscallTableVersion": 1
+}

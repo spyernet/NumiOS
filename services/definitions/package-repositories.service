@@ -1,0 +1,8 @@
+{
+  "unit": { "name": "package-repositories.service", "description": "Repository configuration and index client" },
+  "service": { "type": "builtin", "entry": "package-repositories", "restart": "on-failure", "restartLimit": 3, "restartWindowMs": 60000, "restartBackoffMs": 500 },
+  "dependencies": { "requires": ["storage.service"], "after": ["storage.service"], "wants": [] },
+  "security": { "capabilities": ["network.fetch", "storage.read"] },
+  "resources": { "timeoutMs": 10000, "maxConcurrentTasks": 16 },
+  "enabled": true
+}

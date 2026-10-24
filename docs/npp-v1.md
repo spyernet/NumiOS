@@ -1,0 +1,9 @@
+# NPP v1 package format
+
+NPP is a ZIP-compatible archive using ZIP STORE entries (compression method 0), single-disk ZIP32, UTF-8 file names, CRC-32, and a root `manifest.json`. ZIP64, encryption, compressed entries, data links/special files, absolute paths, traversal, duplicate paths, and undeclared content are rejected. STORE makes NPP archives directly parseable by the browser implementation without a runtime package dependency.
+
+The manifest follows `sdk/manifest.schema.json`. Every payload file except `manifest.json` must appear under `files` with a lowercase SHA-256 digest and optional size. Applications declare a relative JavaScript module `entry` that exports `async function main(sdk, context)`. No install scripts or lifecycle hooks execute. Dependency versions use the semver subset documented by `packages/semver.js` (`*`, exact, `^`, `~`, comparisons, and `||`).
+
+Optional signatures use ECDSA P-256/SHA-256, Web Crypto's raw ECDSA signature representation, and a JWK trusted key selected by `signature.keyId`. The signed bytes are the UTF-8 canonical JSON of the full manifest with the `signature` property removed. File content hashes are verified before signature acceptance. Remote repositories default to signed trust. Unsigned local installation requires both an explicit syscall option and `packages.allowUnsignedLocal: true`; a configured local development repository is separately managed with the privileged `repository.manage` capability.
+
+An application entry runs in a dedicated module Worker, with module code provided by the service-worker virtual-package route. Its entry module must call cooperative `sdk.process.checkpoint()` at points where it wants suspension. Termination is hard for Workers. Same-origin JavaScript can still access browser APIs directly; NPP capability checks protect operations made through NumiOS SDK/syscalls, not hostile code in a same-origin realm.
