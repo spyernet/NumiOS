@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NumiOS repository configuration",
+  "type": "object",
+  "required": ["schemaVersion", "repositories"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "repositories": { "type": "array", "items": { "type": "object", "required": ["id", "name", "index", "enabled", "priority", "trustPolicy"], "properties": { "id": { "type": "string" }, "name": { "type": "string" }, "index": { "type": "string" }, "enabled": { "type": "boolean" }, "priority": { "type": "integer" }, "trustPolicy": { "enum": ["signed", "unsigned"] }, "timeoutMs": { "type": "integer", "minimum": 1 }, "cacheTtlMs": { "type": "integer", "minimum": 0 }, "allowCrossOrigin": { "type": "boolean" } }, "additionalProperties": false } }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NumiOS mount configuration",
+  "type": "object",
+  "required": ["schemaVersion", "mounts"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "mounts": { "type": "array", "items": { "type": "object", "required": ["diskId", "mountPoint"], "properties": { "diskId": { "type": "string" }, "mountPoint": { "type": "string" }, "readOnly": { "type": "boolean" }, "optional": { "type": "boolean" } }, "additionalProperties": false } }
+  },
+  "additionalProperties": false
+}

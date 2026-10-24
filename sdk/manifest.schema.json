@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NumiOS application manifest",
+  "type": "object",
+  "required": ["format", "formatVersion", "id", "name", "version", "type", "entry", "runtime", "minimumOSVersion", "dependencies", "capabilities", "files"],
+  "properties": {
+    "format": { "const": "NPP" },
+    "formatVersion": { "const": 1 },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+([.-][a-z0-9]+)+$", "maxLength": 128 },
+    "name": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "version": { "type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(-[0-9A-Za-z.-]+)?(\\+[0-9A-Za-z.-]+)?$" },
+    "type": { "enum": ["application", "library"] },
+    "entry": { "type": "string", "maxLength": 512 },
+    "runtime": { "const": "numios-js" },
+    "minimumOSVersion": { "type": "string" },
+    "dependencies": { "type": "object", "additionalProperties": { "type": "string" } },
+    "capabilities": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "resources": { "type": "object" },
+    "files": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "object", "required": ["sha256"], "properties": { "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }, "size": { "type": "integer", "minimum": 0 } }, "additionalProperties": false }
+    },
+    "signature": { "type": "object" },
+    "hooks": { "type": "object" }
+  },
+  "additionalProperties": false
+}

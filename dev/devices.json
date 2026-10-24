@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "devices": [
+    { "path": "/dev/console", "type": "console", "virtual": true },
+    { "path": "/dev/null", "type": "null", "virtual": true },
+    { "path": "/dev/zero", "type": "zero", "virtual": true },
+    { "path": "/dev/random", "type": "random", "virtual": true },
+    { "path": "/dev/clipboard", "type": "clipboard", "optional": true, "virtual": true },
+    { "path": "/dev/network", "type": "network", "virtual": true },
+    { "path": "/dev/storage", "type": "storage", "virtual": true },
+    { "path": "/dev/timer", "type": "timer", "virtual": true }
+  ]
+}

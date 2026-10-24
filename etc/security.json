@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "applicationCapabilityAllowlist": [
+    "fs.read.user",
+    "fs.write.user",
+    "fs.read.application",
+    "fs.read.library",
+    "fs.read.temp",
+    "fs.write.temp",
+    "network.fetch",
+    "package.query",
+    "system.info",
+    "ipc.use"
+  ],
+  "denyLaunchWithUnapprovedCapabilities": true,
+  "trustedRepositories": [],
+  "protectedPaths": ["/System", "/usr", "/bin", "/lib", "/etc", "/var/lib/numios"]
+}

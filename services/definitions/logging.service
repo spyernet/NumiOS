@@ -1,0 +1,8 @@
+{
+  "unit": { "name": "logging.service", "description": "Central structured logging and bounded persistence" },
+  "service": { "type": "builtin", "entry": "logging", "restart": "on-failure", "restartLimit": 5, "restartWindowMs": 60000, "restartBackoffMs": 250 },
+  "dependencies": { "requires": ["storage.service"], "after": ["storage.service"], "wants": [] },
+  "security": { "capabilities": ["fs.read.system", "fs.write.system"] },
+  "resources": { "timeoutMs": 10000, "maxConcurrentTasks": 16 },
+  "enabled": true
+}

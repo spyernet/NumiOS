@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "os": {
+    "name": "NumiOS",
+    "version": "0.1.0",
+    "architecture": "browser-native-esm"
+  },
+  "storage": {
+    "backend": "indexeddb",
+    "databaseName": "numios",
+    "databaseVersion": 1,
+    "rootQuotaBytes": 67108864,
+    "tempQuotaBytes": 16777216,
+    "requestPersistentStorage": true,
+    "allowEphemeralRoot": false
+  },
+  "runtime": {
+    "maxProcesses": 256,
+    "maxLogicalMemoryBytes": 268435456,
+    "maxHandlesPerProcess": 256,
+    "cooperativeTaskBudgetMs": 10000,
+    "defaultSyscallTimeoutMs": 30000,
+    "maxSyscallTimeoutMs": 120000
+  },
+  "logging": {
+    "level": "info",
+    "capacity": 2000
+  },
+  "applications": {
+    "allowDom": false,
+    "workerOnly": true
+  },
+  "packages": {
+    "allowUnsignedLocal": false,
+    "trustedKeys": {},
+    "maximumArchiveBytes": 33554432,
+    "maximumUnpackedBytes": 67108864
+  }
+}

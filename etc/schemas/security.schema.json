@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NumiOS security configuration",
+  "type": "object",
+  "required": ["schemaVersion", "applicationCapabilityAllowlist", "denyLaunchWithUnapprovedCapabilities", "trustedRepositories", "protectedPaths"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "applicationCapabilityAllowlist": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "denyLaunchWithUnapprovedCapabilities": { "type": "boolean" },
+    "trustedRepositories": { "type": "array", "items": { "type": "string" } },
+    "protectedPaths": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

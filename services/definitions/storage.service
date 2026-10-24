@@ -1,0 +1,8 @@
+{
+  "unit": { "name": "storage.service", "description": "Persistent virtual disk and quota diagnostics" },
+  "service": { "type": "builtin", "entry": "storage", "restart": "on-failure", "restartLimit": 5, "restartWindowMs": 60000, "restartBackoffMs": 250 },
+  "dependencies": { "requires": [], "after": [], "wants": [] },
+  "security": { "capabilities": ["storage.read", "storage.write"] },
+  "resources": { "timeoutMs": 10000, "maxConcurrentTasks": 16 },
+  "enabled": true
+}
